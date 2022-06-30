@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 const path = require("node:path");
-const PORT = 3000;
+const PORT = 80;
 const fs = require("fs");
 
 // Initiate server
