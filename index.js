@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 const path = require("node:path");
 const PORT = 3000;
+const fs = require("fs");
 
 // Initiate server
 const express = require("express");
@@ -13,8 +14,24 @@ app.get("/", function (req, res) {
   res.render("main/index");
 });
 
-app.get("/test", function (req, res) {
-  res.send("TEST");
+app.get("/:pageName", function (req, res) {
+  console.log(req.params.pageName);
+  // Test if page exists
+
+  fs.access(
+    `${path.join(__dirname, "/views/main")}/${req.params.pageName}.ejs`,
+    fs.F_OK,
+    (err) => {
+      if (err) {
+        console.error(err);
+        res.send("Unknown page");
+        return;
+      }
+
+      //file exists
+      res.render(`main/${req.params.pageName}`);
+    }
+  );
 });
 
 // Run server
