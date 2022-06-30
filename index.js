@@ -9,7 +9,7 @@ app.set("views", path.join(__dirname, "/views"));
 
 // Serve website using EJS
 app.get("/", function (req, res) {
-  res.render("website/index");
+  res.render("main/index");
 });
 
 // Run server
