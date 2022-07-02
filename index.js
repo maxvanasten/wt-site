@@ -15,7 +15,7 @@ app.get("/", function (req, res) {
   res.render("main/index");
 });
 
-app.get("/:pageName", function (req, res) {
+app.get("/page/:pageName", function (req, res) {
   console.log(req.params.pageName);
   // Test if page exists
 
